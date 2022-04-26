@@ -24,12 +24,12 @@ for (let a = 0; a < alphArray; a++) {
             //   ),
             // };
             let url =
-              "https://mongoltoli.mn/dictionary/lists/" +
               alphArray[a] +
               alphArray[b] +
               alphArray[c] +
               alphArray[i] +
-              alphArray[j];
+              alphArray[j] +
+              "&t=ТОЛЬ";
             url = decodeURI(url);
             url = encodeURI(url);
 
@@ -54,19 +54,36 @@ for (let a = 0; a < alphArray; a++) {
 
                 if (
                   $.text().includes(
-                    " -The word you've entered isn't in our dictionary."
+                    "Таны хайсан үг олдсонгүй. Хайх үгээ зөв бичсэн эсэхийг нягтлан дахин оролдоно уу!"
                   )
                 ) {
                   //   words.push(codes[i]);
                   console.log(
-                    alphArray[i] + alphArray[j] + " bol ug bish yumaa"
+                    alphArray[a] +
+                      alphArray[b] +
+                      alphArray[c] +
+                      alphArray[i] +
+                      alphArray[j] +
+                      " bol ug bish yumaa"
                   );
                 } else {
                   //   nonwords.push(codes[i]);
-                  console.log(alphArray[i] + alphArray[j] + " bol ug yumaa");
+                  console.log(
+                    alphArray[a] +
+                      alphArray[b] +
+                      alphArray[c] +
+                      alphArray[i] +
+                      alphArray[j] +
+                      " bol ug yumaa"
+                  );
                   let file = {
-                    index: i + j,
-                    word: alphArray[i] + alphArray[j],
+                    index: a + b + c + i + j,
+                    word:
+                      alphArray[a] +
+                      alphArray[b] +
+                      alphArray[c] +
+                      alphArray[i] +
+                      alphArray[j],
                   };
                   fs.readFile("words.json", function (err, data) {
                     let json = JSON.parse(data);
